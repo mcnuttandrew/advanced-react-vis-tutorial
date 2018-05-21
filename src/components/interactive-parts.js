@@ -23,7 +23,8 @@ export default class InteractiveComponents extends React.Component {
     highlightTip: null
   }
   componentWillMount() {
-    this.debouncedSetState = debounce(newState => this.setState(newState), 40);
+    this.debouncedSetState = debounce(newState =>
+      this.setState(newState), 40);
   }
   render() {
     const {allPoints, playerYearMap, playerMap} = this.props;
@@ -38,6 +39,8 @@ export default class InteractiveComponents extends React.Component {
     return (
       <div className="absolute full">
         <XYPlot
+          onMouseLeave={() =>
+            this.setState({highlightSeries: null, highlightTip: null})}
           xDomain={[0, NUMBER_OF_GAMES]}
           yDomain={[0, MAX_NUMBER_OF_THREE_POINTERS + 1]}
           {...layout}>
@@ -68,7 +71,10 @@ export default class InteractiveComponents extends React.Component {
           }
 
           <Voronoi
-            extent={[[0, y(MAX_NUMBER_OF_THREE_POINTERS)], [width, height - margin.bottom]]}
+            extent={[
+              [0, y(MAX_NUMBER_OF_THREE_POINTERS)],
+              [width, height - margin.bottom]
+            ]}
             nodes={allPoints}
             polygonStyle={{
               // UNCOMMENT BELOW TO SEE VORNOI
@@ -77,7 +83,10 @@ export default class InteractiveComponents extends React.Component {
             onHover={row => {
               const player = playerMap[`${row.pname}-${row.year}`];
               if (!player) {
-                this.setState({highlightSeries: null, highlightTip: null});
+                this.setState({
+                  highlightSeries: null,
+                  highlightTip: null
+                });
                 return;
               }
               this.debouncedSetState({

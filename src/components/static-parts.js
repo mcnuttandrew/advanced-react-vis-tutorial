@@ -10,14 +10,14 @@ import {
 import {
   cleanData,
   getDataDomain,
-  buildVoronoiPointsWithSimplification
+  buildVoronoiPoints
 } from '../utils';
 import {
   layout,
   NUMBER_OF_GAMES,
   MAX_NUMBER_OF_THREE_POINTERS
 } from '../constants';
-import InteractiveComponents from './interactive-components';
+import InteractiveComponents from './interactive-parts';
 
 export default class RootComponent extends React.Component {
   state = {
@@ -33,7 +33,8 @@ export default class RootComponent extends React.Component {
       .then(data => {
         const updatedData = cleanData(data);
         const playerYearMap = updatedData.reduce((acc, row) => {
-          acc[`${row.pname}-${row.year}`] = row.gameData[row.gameData.length - 1].y;
+          const {pname, year, gameData} = row;
+          acc[`${pname}-${year}`] = gameData[gameData.length - 1].y;
           return acc;
         }, {});
 
@@ -44,7 +45,7 @@ export default class RootComponent extends React.Component {
         this.setState({
           data: updatedData,
           loading: false,
-          allPoints: buildVoronoiPointsWithSimplification(updatedData),
+          allPoints: buildVoronoiPoints(updatedData),
           playerYearMap,
           playerMap
         });
