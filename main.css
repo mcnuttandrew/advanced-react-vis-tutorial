@@ -1,0 +1,101 @@
+
+.title {
+  color: black;
+  font-family: Roboto-Black;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.subtitle {
+  color: black;
+  font-family: Roboto-Black;
+  font-size: 12px;
+  font-weight: semi-bold;
+}
+
+.max-width-1000 {
+  max-width: 1000px;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  width: auto;
+}
+
+.flex {
+  display: flex;
+  width: auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.state-hex {
+  dominant-baseline: central;
+  text-anchor: middle;
+}
+
+.state-hex-label {
+  font-family: Roboto;
+  font-size: 10px;
+  pointer-events: none;
+}
+
+.selected {
+  fill: white;
+}
+
+.checkbox input {
+  height: 20px;
+  width: 20px;
+}
+
+.checkbox span {
+  font-size: 20px
+}
+
+
+.not-enough-cols {
+  align-items: center;
+  display: flex;
+  font-size: 40px;
+  justify-content: center;
+  width: 400px;
+}
+
+.description {
+  max-width: 370px;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.full {
+  height: 100%;
+  top: 0;
+  width: 100%;
+}
+
+.rv-hint {
+  background: black;
+  border-radius: 4px;
+  color: white;
+  font-family: sans-serif;
+  font-size: 10px;
+  padding: 6px;
+  text-transform: uppercase;
+}
